@@ -1,34 +1,424 @@
+
 <!DOCTYPE html>
 <html lang="sw">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Donate | Changia</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0759b9">
+<title>Changia Leo | Mchango Salama</title>
+
 <style>
-:root{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;color:#14213d;background:#f3f7fb}*{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;padding:22px}.card{width:min(100%,440px);background:white;border-radius:26px;box-shadow:0 15px 45px #15345b18;overflow:hidden}.hero{background:linear-gradient(135deg,#0759b9,#163e9e);color:white;padding:30px 25px;text-align:center}.heart{font-size:40px}.hero h1{margin:10px 0 6px;font-size:27px}.hero p{margin:0;opacity:.9;line-height:1.5}.content{padding:25px}.title{font-weight:750;margin-bottom:12px}.amounts{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-bottom:20px}.amount{border:1px solid #d6e2ee;background:white;border-radius:12px;padding:14px 3px;font-weight:750;color:#27415c;cursor:pointer}.amount.active{background:#e8f1ff;border:2px solid #1167dc;color:#0754bc;padding:13px 2px}label{display:block;font-size:14px;font-weight:650;margin:15px 0 8px}input{width:100%;border:1px solid #d6e2ee;border-radius:12px;padding:15px;font:inherit;outline:none}input:focus{border-color:#1264cc;box-shadow:0 0 0 3px #1264cc19}.pay{width:100%;border:0;background:#168448;color:white;border-radius:13px;padding:17px;font-size:16px;font-weight:750;margin-top:23px;cursor:pointer}.note{text-align:center;color:#738398;font-size:12px;margin-top:15px;line-height:1.5}.status{margin-top:15px;padding:13px;border-radius:12px;background:#fff7e5;color:#755113;font-size:14px;display:none}.footer{text-align:center;color:#8693a4;font-size:12px;margin-top:20px}
+:root {
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: #14213d;
+  background: #f3f7fb;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 22px;
+}
+
+.card {
+  width: min(100%, 440px);
+  background: white;
+  border-radius: 26px;
+  box-shadow: 0 15px 45px #15345b18;
+  overflow: hidden;
+}
+
+.hero {
+  background: linear-gradient(135deg, #0759b9, #163e9e);
+  color: white;
+  padding: 30px 25px;
+  text-align: center;
+}
+
+.heart { font-size: 40px; }
+
+.hero h1 {
+  margin: 10px 0 6px;
+  font-size: 27px;
+}
+
+.hero p {
+  margin: 0;
+  opacity: .9;
+  line-height: 1.5;
+}
+
+.content { padding: 25px; }
+
+.title {
+  font-weight: 750;
+  margin-bottom: 12px;
+}
+
+.amounts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 9px;
+  margin-bottom: 20px;
+}
+
+.amount {
+  border: 1px solid #d6e2ee;
+  background: white;
+  border-radius: 12px;
+  padding: 14px 3px;
+  font-weight: 750;
+  color: #27415c;
+  cursor: pointer;
+}
+
+.amount.active {
+  background: #e8f1ff;
+  border: 2px solid #1167dc;
+  color: #0754bc;
+  padding: 13px 2px;
+}
+
+label {
+  display: block;
+  font-size: 14px;
+  font-weight: 650;
+  margin: 15px 0 8px;
+}
+
+input {
+  width: 100%;
+  border: 1px solid #d6e2ee;
+  border-radius: 12px;
+  padding: 15px;
+  font: inherit;
+  outline: none;
+}
+
+input:focus {
+  border-color: #1264cc;
+  box-shadow: 0 0 0 3px #1264cc19;
+}
+
+.pay {
+  width: 100%;
+  border: 0;
+  background: #168448;
+  color: white;
+  border-radius: 13px;
+  padding: 17px;
+  font-size: 16px;
+  font-weight: 750;
+  margin-top: 23px;
+  cursor: pointer;
+}
+
+.pay:disabled {
+  opacity: .65;
+  cursor: not-allowed;
+}
+
+.note {
+  text-align: center;
+  color: #738398;
+  font-size: 12px;
+  margin-top: 15px;
+  line-height: 1.5;
+}
+
+.status {
+  margin-top: 15px;
+  padding: 13px;
+  border-radius: 12px;
+  background: #eaf5ff;
+  color: #174d85;
+  font-size: 14px;
+  line-height: 1.5;
+  display: none;
+}
+
+.footer {
+  text-align: center;
+  color: #8693a4;
+  font-size: 12px;
+  margin-top: 20px;
+}
 </style>
 </head>
+
 <body>
+
 <main class="card">
-<section class="hero"><div class="heart">💙</div><h1>Changia Leo</h1><p>Mchango wako unatusaidia kuendelea na kazi zetu. Asante kwa kutuunga mkono!</p></section>
-<section class="content">
-<div class="title">Chagua kiasi cha kuchangia</div>
-<div class="amounts"><button class="amount" data-amount="1000">1,000</button><button class="amount active" data-amount="5000">5,000</button><button class="amount" data-amount="10000">10,000</button></div>
-<form id="donateForm">
-<label for="amount">Kiasi (TZS)</label><input id="amount" name="amount" type="number" min="100" step="1" value="5000" required inputmode="numeric">
-<label for="phone">Namba ya simu</label><input id="phone" name="phone" type="tel" inputmode="tel" placeholder="07XXXXXXXX" autocomplete="tel" pattern="(?:\+255|255|0)[67][0-9]{8}" title="Weka namba ya Tanzania, mfano 0712345678" required>
-<button class="pay" type="submit">🔒 Changia Sasa</button>
-<div id="status" class="status" role="status" aria-live="polite"></div>
-</form>
-<div class="note">Huu ni ukurasa wa majaribio. Malipo halisi bado hayajaunganishwa na Snippe.</div>
-<div class="footer">© 2026 Donate Website</div>
-</section>
+
+  <section class="hero">
+    <div class="heart">💙</div>
+    <h1>Changia Leo</h1>
+    <p>
+      Mchango wako unatusaidia kuendelea na kazi zetu.
+      Asante kwa kutuunga mkono!
+    </p>
+  </section>
+
+  <section class="content">
+
+    <div class="title">Chagua kiasi cha kuchangia</div>
+
+    <div class="amounts">
+      <button class="amount" type="button" data-amount="1000">
+        1,000
+      </button>
+
+      <button class="amount active" type="button" data-amount="5000">
+        5,000
+      </button>
+
+      <button class="amount" type="button" data-amount="10000">
+        10,000
+      </button>
+    </div>
+
+    <form id="donateForm">
+
+      <label for="amount">Kiasi cha mchango (TZS)</label>
+
+      <input
+        id="amount"
+        name="amount"
+        type="number"
+        min="500"
+        max="10000000"
+        step="1"
+        value="5000"
+        required
+        inputmode="numeric"
+      >
+
+      <label for="phone">Namba ya simu</label>
+
+      <input
+        id="phone"
+        name="phone"
+        type="tel"
+        inputmode="tel"
+        placeholder="07XXXXXXXX"
+        autocomplete="tel"
+        pattern="(\+255|255|0)[67][0-9]{8}"
+        title="Mfano: 0712345678"
+        required
+      >
+
+      <button class="pay" id="payButton" type="submit">
+        🔒 Changia Sasa
+      </button>
+
+      <div
+        id="status"
+        class="status"
+        role="status"
+        aria-live="polite"
+      ></div>
+
+    </form>
+
+    <div class="note">
+      Malipo yatafanyika kupitia ukurasa salama wa Snippe.
+      Utathibitisha malipo kwa simu yako.
+      Usiweke PIN yako kwenye website hii.
+    </div>
+
+    <div class="footer">
+      © 2026 Changia Leo
+    </div>
+
+  </section>
+
 </main>
+
 <script>
-const amountInput=document.getElementById('amount');
-const amountButtons=[...document.querySelectorAll('.amount')];
-amountButtons.forEach(btn=>btn.addEventListener('click',()=>{amountInput.value=btn.dataset.amount;amountButtons.forEach(b=>b.classList.toggle('active',b===btn));}));
-amountInput.addEventListener('input',()=>amountButtons.forEach(b=>b.classList.toggle('active',b.dataset.amount===amountInput.value)));
-document.getElementById('donateForm').addEventListener('submit',e=>{e.preventDefault();const amount=Number(amountInput.value);const phone=document.getElementById('phone').value.trim();if(!Number.isSafeInteger(amount)||amount<100){amountInput.setCustomValidity('Weka kiasi halali kuanzia TZS 100');amountInput.reportValidity();amountInput.setCustomValidity('');return;}const status=document.getElementById('status');status.style.display='block';status.textContent=`Majaribio pekee: Umechagua TZS ${amount.toLocaleString('en-US')} kwa namba ${phone}. Hakuna pesa iliyokatwa. Tutaunganisha malipo halisi baada ya kuweka backend ya Snippe.`;});
+"use strict";
+
+const API_URL =
+  "https://donate-snippe-api.kivule2024tz.workers.dev";
+
+const form = document.getElementById("donateForm");
+const amountInput = document.getElementById("amount");
+const phoneInput = document.getElementById("phone");
+const payButton = document.getElementById("payButton");
+const statusBox = document.getElementById("status");
+
+const amountButtons = [
+  ...document.querySelectorAll(".amount")
+];
+
+let processing = false;
+
+// Kuchagua kiasi
+amountButtons.forEach(button => {
+  button.addEventListener("click", () => {
+    if (processing) return;
+
+    amountInput.value = button.dataset.amount;
+
+    amountButtons.forEach(item => {
+      item.classList.toggle(
+        "active",
+        item === button
+      );
+    });
+  });
+});
+
+// Kiasi kingine
+amountInput.addEventListener("input", () => {
+  amountButtons.forEach(button => {
+    button.classList.toggle(
+      "active",
+      button.dataset.amount === amountInput.value
+    );
+  });
+});
+
+// Kuonyesha ujumbe
+function showStatus(message, isError = false) {
+  statusBox.style.display = "block";
+
+  statusBox.style.background = isError
+    ? "#fff0f0"
+    : "#eaf5ff";
+
+  statusBox.style.color = isError
+    ? "#a52222"
+    : "#174d85";
+
+  statusBox.textContent = message;
+}
+
+// Kufunga/kufungua button
+function setProcessing(value) {
+  processing = value;
+  payButton.disabled = value;
+  amountInput.disabled = value;
+  phoneInput.disabled = value;
+
+  amountButtons.forEach(button => {
+    button.disabled = value;
+  });
+
+  payButton.textContent = value
+    ? "Inaandaa malipo..."
+    : "🔒 Changia Sasa";
+}
+
+// Kuhakiki namba
+function validPhone(phone) {
+  return /^(?:\+255|255|0)[67]\d{8}$/.test(phone);
+}
+
+// Kuhakiki checkout URL
+function validCheckoutUrl(value) {
+  try {
+    const url = new URL(value);
+
+    return (
+      url.protocol === "https:" &&
+      (
+        url.hostname === "snippe.me" ||
+        url.hostname === "www.snippe.me"
+      )
+    );
+  } catch {
+    return false;
+  }
+}
+
+// Kuanzisha malipo
+form.addEventListener("submit", async event => {
+  event.preventDefault();
+
+  if (processing) return;
+
+  const amount = Number(amountInput.value);
+  const phone = phoneInput.value.trim();
+
+  if (
+    !Number.isSafeInteger(amount) ||
+    amount < 500 ||
+    amount > 10000000
+  ) {
+    showStatus(
+      "Weka kiasi halali cha TZS 500 hadi 10,000,000.",
+      true
+    );
+    return;
+  }
+
+  if (!validPhone(phone)) {
+    showStatus(
+      "Weka namba sahihi ya Tanzania, mfano 0712345678.",
+      true
+    );
+    return;
+  }
+
+  setProcessing(true);
+
+  showStatus(
+    "Tafadhali subiri, tunaandaa ukurasa wa malipo..."
+  );
+
+  try {
+    const response = await fetch(API_URL + "/payment", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        amount: amount
+      })
+    });
+
+    const result = await response.json();
+
+    if (!response.ok) {
+      throw new Error(
+        result.error ||
+        "Imeshindikana kuanzisha malipo."
+      );
+    }
+
+    if (!result.checkout_url) {
+      throw new Error(
+        "Snippe haijarudisha kiungo cha malipo."
+      );
+    }
+
+    if (!validCheckoutUrl(result.checkout_url)) {
+      throw new Error(
+        "Kiungo cha malipo kilichopokelewa si sahihi."
+      );
+    }
+
+    showStatus(
+      "Unaelekezwa kwenye ukurasa salama wa Snippe..."
+    );
+
+    window.location.assign(result.checkout_url);
+
+  } catch (error) {
+    showStatus(
+      error.message ||
+      "Kuna tatizo la mtandao. Jaribu tena.",
+      true
+    );
+
+    setProcessing(false);
+  }
+});
 </script>
+
 </body>
 </html>
